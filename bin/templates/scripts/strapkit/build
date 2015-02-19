@@ -17,5 +17,8 @@ mkdir -p $CURRENT_DIR/../libraries/assets/
 cp $CURRENT_DIR/../../../js/$APP_FILE $CURRENT_DIR/../libraries/assets/app.js
 cd $SAMPLE_DIR
 
+
 xcodebuild
-cp $SAMPLE_DIR/build/*.app $OUTPUT_DIR/
+pwd
+echo $PROJECT_NAME
+cp -r $SAMPLE_DIR/build/Debug-iphoneos/com.straphq.teststrapkit.app $OUTPUT_DIR/
