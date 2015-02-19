@@ -642,7 +642,7 @@
 				AA0AA0FA1A9536CE00C535E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA0AA0FB1A9536CE00C535E0 /* Build configuration list for PBXNativeTarget "com.straphq.teststrapkit" */ = {
 			isa = XCConfigurationList;
@@ -651,7 +651,7 @@
 				AA0AA0FD1A9536CE00C535E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA0AA0FE1A9536CE00C535E0 /* Build configuration list for PBXNativeTarget "com.straphq.teststrapkitTests" */ = {
 			isa = XCConfigurationList;
@@ -660,7 +660,7 @@
 				AA0AA1001A9536CE00C535E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA0AA1271A95375600C535E0 /* Build configuration list for PBXNativeTarget "com.straphq.teststrapkit WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -669,6 +669,7 @@
 				AA0AA1261A95375600C535E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		AA0AA1281A95375600C535E0 /* Build configuration list for PBXNativeTarget "com.straphq.teststrapkit WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -677,6 +678,7 @@
 				AA0AA1241A95375600C535E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Utility to bail out of execution
+fail() {
+    echo "Error: $1"
+    exit 1
+}
+
+# Check adb available
+if ! which xcrun > /dev/null; then
+    fail "Missing xcrun. XCode command line tools in path?"
+fi
+
+echo
+echo "Launching iOS Simlator and installing app"
+
+xcrun instruments -w "iPhone 6 (8.3 Simulator)"
+xcrun simctl install "iPhone 6" build/Debug-iphoneos/com.straphq.teststrapkit.app
+xcrun simctl launch "iPhone 6" com.straphq.com-straphq-teststrapkit.watchkitapp
+
+echo "Done!"

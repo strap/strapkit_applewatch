@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CURRENT_DIR=$(cd "$( dirname "$0" )" && pwd -P)
+PROJECT_NAME=$( basename $(pwd -P))
+
+SAMPLE_DIR="$CURRENT_DIR/../$PROJECT_NAME"
+OUTPUT_DIR="$CURRENT_DIR/../../../build/apple-watch"
+
+mkdir -p $OUTPUT_DIR
+
+APP_FILE="$0"
+if [ "$1" == "" ];then
+    APP_FILE="app.js"
+fi
+cp $CURRENT_DIR/../../../js/$APP_FILE $SAMPLE_DIR/assets/app.js
+mkdir -p $CURRENT_DIR/../libraries/assets/
+cp $CURRENT_DIR/../../../js/$APP_FILE $CURRENT_DIR/../libraries/assets/app.js
+cd $SAMPLE_DIR
+
+xcodebuild
+cp $SAMPLE_DIR/build/*.app $OUTPUT_DIR/

@@ -50,7 +50,8 @@ function usage (){
 # @param target_file
 #
 function replace_package (){
-    sed -e "$(PRODUCT_NAME)" "$1" > /tmp/out
+    sed -e "s@\com.straphq.\$(PRODUCT_NAME\:rfc1034identifier)@$PACKAGE@g" "$1" > /tmp/out
+    sed -e "s@\com.straphq.com-straphq-teststrapkit@$PACKAGE@g" "$1" > /tmp/out
     cat /tmp/out >  "$1"
     rm /tmp/out
 }
@@ -62,7 +63,8 @@ function replace_package (){
 # @param target_file
 #
 function replace_name (){
-    sed -e "s@MySampleApp@$PROJECT_NAME@g" "$1" > /tmp/out
+    sed -e "s@\$(PRODUCT_NAME)@$PROJECT_NAME@g" "$1" > /tmp/out
+    sed -e "s@com.straphq.com-straphq-teststrapkit.watchkitapp@$PROJECT_NAME.watchkitapp@g" "$1" > /tmp/out
     cat /tmp/out >  "$1"
     rm /tmp/out
 }
@@ -140,29 +142,17 @@ cp -r "$SCRIPT_TEMPLATE_DIR"/* "$PROJECT_PATH/"
 mkdir $R
 
 # Copy non-edited directories
-cp -r $PROJECT_TEMPLATE_DIR/{com.straphq.*} "$R/."
+cp -r $PROJECT_TEMPLATE_DIR/com.straphq.* "$R/."
 
+# TODO: fix name replace - sed throwing file not found errors.
 # Adjust product name in main project
-replace_package "$R/com.straphq.teststrapkit/Info.plist"
+#replace_name "$R/com.straphq.teststrapkit/Info.plist"
+#replace_package "$R/com.straphq.teststrapkit/Info.plist"
 
 # Adjust product name in watch project
-replace_name "$R/com.straphq.teststrapkit\ WatchKit\ App/Info.plist"
+#replace_name "$R/com.straphq.teststrapkit\ WatchKit\ App/Info.plist"
+#replace_package "$R/com.straphq.teststrapkit\ WatchKit\ App/Info.plist"
 
-# Setup Mobile directories
-# mkdir -p "$R/mobile"
-# cp -r $PROJECT_TEMPLATE_DIR/mobile/{libs,.gitignore,build.gradle,mobile.iml} "$R/mobile/."
-# mkdir -p "$R/mobile/src/main"
-# cp -r $PROJECT_TEMPLATE_DIR/mobile/src/main/{assets,res,AndroidManifest.xml} "$R/mobile/src/main/."
-# mkdir -p "$R/mobile/src/main/$PACKAGE_DIR"
-# cp -r $PROJECT_TEMPLATE_DIR/mobile/src/main/java/com/straphq/teststrapkit/mysampleapp/* "$R/mobile/src/main/$PACKAGE_DIR"
-
-# # Adjust package names in mobile module
-# replace_package "$R/mobile/src/main/AndroidManifest.xml"
-# replace_package "$R/mobile/build.gradle"
-# replace_package "$R/mobile/src/main/$PACKAGE_DIR/BaseActivity.java"
-
-# Adjust app name in wear module
-# replace_name "$R/mobile/src/main/res/values/strings.xml"
 
 echo
 echo "Done!"
